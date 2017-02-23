@@ -3,11 +3,13 @@ var maxScore = document.getElementById('maxScore').value
 var gameOver = false;
 var winningScore = 5;
 
+// array of players
 players = [
   player1 = new Player('p1', 'p1Display'),
   player2 = new Player('p2', 'p2Display')
 ]
 
+// Player object constructor
 function Player(buttonID, displayID) {
   this.button = document.getElementById(buttonID);
   this.display = document.getElementById(displayID);
@@ -27,8 +29,9 @@ function Player(buttonID, displayID) {
   this.button.addEventListener('click', this.updateScore.bind(this))
 }
 
-document.getElementById('reset').addEventListener('click', reset)
-function reset() {
+// Reset the game
+document.getElementById('reset').addEventListener('click', resetGame)
+function resetGame() {
   players.forEach(function(player) {
     player.score = 0;
     player.display.textContent = player.score;
@@ -37,6 +40,7 @@ function reset() {
   gameOver = false;
 }
 
+// Change the score for winning the game
 document.getElementById('maxScore').addEventListener('change', changeWinningScore)
 function changeWinningScore() {
  winningScore = parseInt(document.getElementById('maxScore').value)
